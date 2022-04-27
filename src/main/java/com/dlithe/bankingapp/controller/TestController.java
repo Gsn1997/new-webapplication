@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class TestController {
-     @GetMapping("test")
+     @GetMapping("Goutham")
 
     public String myMethod(){
          return "Hey guys!!! Its me, Spring-boot endpoint response";
