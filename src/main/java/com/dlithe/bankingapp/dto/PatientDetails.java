@@ -11,11 +11,11 @@ import lombok.ToString;
 @ToString
 public class PatientDetails {
 
-    private String firstName;
-    private String lastName;
-    private String mobileNumber;
+    private String name;
+    private int age;
+    private String place;
     private String disease;
-
+    private String mobile_num;
 
 
 }
