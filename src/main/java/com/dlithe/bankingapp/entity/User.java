@@ -31,5 +31,5 @@ public class User {
     private String disease;
 
     @Column(name = "mobile_num")
-    private String mobile_num;
+    private String mobileNumber;
 }

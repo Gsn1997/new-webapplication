@@ -2,12 +2,15 @@ package com.dlithe.bankingapp.serviceimpl;
 
 import com.dlithe.bankingapp.dto.PatientDetails;
 import com.dlithe.bankingapp.dto.PatientDetailsResponse;
+import com.dlithe.bankingapp.dto.ReviewResponse;
 import com.dlithe.bankingapp.entity.User;
 import com.dlithe.bankingapp.repository.UserDAO;
 import com.dlithe.bankingapp.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -49,7 +52,7 @@ public class TestServiceImpl implements TestService {
         user.setAge(patientDetails.getAge());
         user.setPlace(patientDetails.getPlace());
         user.setDisease(patientDetails.getDisease());
-        user.setMobile_num(patientDetails.getMobile_num());
+        user.setMobileNumber(patientDetails.getMobile_num());
 
 
         userDAO.save(user);
@@ -57,6 +60,53 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
+    public PatientDetailsResponse getPatientDetailsResponse(int userId) {
+//        db call
+        Optional<User> user = userDAO.findById(userId);
+        PatientDetailsResponse patientDetailsResponse = new PatientDetailsResponse();
+        List<ReviewResponse> reviewResponseList = new ArrayList<>();
+        if (!user.isPresent()) {
+            throw new NullPointerException("User not found");
+        }
+//        fetch
+        User userFromDatabase = user.get();
+        patientDetailsResponse.setId(userFromDatabase.getId());
+
+        patientDetailsResponse.setName(userFromDatabase.getName());
+        patientDetailsResponse.setAge(userFromDatabase.getAge());
+        patientDetailsResponse.setDisease(userFromDatabase.getDisease());
+        patientDetailsResponse.setPlace(userFromDatabase.getPlace());
+        patientDetailsResponse.setMobileNumber(userFromDatabase.getMobileNumber());
+
+        ReviewResponse reviewResponse = new ReviewResponse();
+        reviewResponse.setDisease("stomach ace");
+        reviewResponse.setDoctorName("Dr.Murthy");
+        reviewResponse.setAdvice("take care of ur food");
+        reviewResponse.setMedication("Liquiprin,panadol  anacin");
+
+        ReviewResponse reviewResponse1 = new ReviewResponse();
+        reviewResponse1.setDisease("Breathing Problem");
+        reviewResponse1.setDoctorName("Dr Ashok");
+        reviewResponse1.setAdvice("relax your neck and shloders");
+        reviewResponse1.setMedication("Eklira");
+
+        ReviewResponse reviewResponse2 = new ReviewResponse();
+        reviewResponse2.setDisease("fever");
+        reviewResponse2.setDoctorName("Dr. Mahesh");
+        reviewResponse2.setAdvice("Reduce open to sunny");
+        reviewResponse2.setMedication("dolo");
+
+        reviewResponseList.add(reviewResponse);
+        reviewResponseList.add(reviewResponse1);
+        reviewResponseList.add(reviewResponse2);
+
+        patientDetailsResponse.setReview(reviewResponseList);
+
+
+        return patientDetailsResponse;
+    }
+
+    /*@Override
     public PatientDetailsResponse getPatientDetailsResponse(int userId) {
         Optional<User> user = userDAO.findById(userId);
         if (!user.isPresent()) {
@@ -68,8 +118,7 @@ public class TestServiceImpl implements TestService {
         patientDetailsResponse.setAge(user.get().getAge());
 
         return patientDetailsResponse;
-    }
-
+    }*/
 
 }
 
