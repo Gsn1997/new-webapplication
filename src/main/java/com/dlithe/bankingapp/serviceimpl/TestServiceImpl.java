@@ -1,5 +1,6 @@
 package com.dlithe.bankingapp.serviceimpl;
 
+import com.dlithe.bankingapp.dto.BaseResponse;
 import com.dlithe.bankingapp.dto.PatientDetails;
 import com.dlithe.bankingapp.dto.PatientDetailsResponse;
 import com.dlithe.bankingapp.dto.ReviewResponse;
@@ -7,6 +8,7 @@ import com.dlithe.bankingapp.entity.User;
 import com.dlithe.bankingapp.repository.UserDAO;
 import com.dlithe.bankingapp.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,7 +19,7 @@ import java.util.Optional;
 public class TestServiceImpl implements TestService {
 
 
-    @Override
+    /*@Override
     public String productDetails(String productName) {
         if (productName != null) {
             switch (productName) {
@@ -39,13 +41,57 @@ public class TestServiceImpl implements TestService {
         }
 
 
-    }
+    }*/
 
     @Autowired
     private UserDAO userDAO;
 
+   /* @Override
+    public PatientDetailsResponse fetchPatientDetailsResponseByNameId(String name, int id) {
+        PatientDetailsResponse patientDetailsResponse =new PatientDetailsResponse();
+        User user= userDAO.findByNameId(name,id);
+        patientDetailsResponse.setId(user.getId());
+        patientDetailsResponse.setName(user.getName());
+        patientDetailsResponse.setAge(user.getAge());
+        patientDetailsResponse.setPlace(user.getPlace());
+
+        return patientDetailsResponse;
+    }*/
 
     @Override
+    public ResponseEntity<BaseResponse> findUserDetails(int id) {
+        User user= userDAO.findById(id);
+
+
+
+
+        return null;
+    }
+//for fetch in only by id
+    /*@Override
+    public PatientDetailsResponse fetchPatientDetailsResponseById(int id) {
+        PatientDetailsResponse patientDetailsResponse =new PatientDetailsResponse();
+        User user= userDAO.findById(id);
+        patientDetailsResponse.setId(user.getId());
+        patientDetailsResponse.setName(user.getName());
+        patientDetailsResponse.setAge(user.getAge());
+        return patientDetailsResponse;
+    }*/
+////for fetch in only by name
+    /*@Override
+    public PatientDetailsResponse fetchPatientDetailsResponseByUserName(String userName) {
+        PatientDetailsResponse patientDetailsResponse =new PatientDetailsResponse();
+
+        User user =userDAO.findByName(userName);
+        patientDetailsResponse.setId(user.getId());
+        patientDetailsResponse.setName(user.getName());
+        patientDetailsResponse.setAge(user.getAge());
+
+        return patientDetailsResponse;
+    }*/
+
+
+    /*@Override
     public String registerPatient(PatientDetails patientDetails) {
         User user = new User();
         user.setName(patientDetails.getName());
@@ -57,9 +103,9 @@ public class TestServiceImpl implements TestService {
 
         userDAO.save(user);
         return "User Saved";
-    }
+    }*/
 
-    @Override
+    /*@Override
     public PatientDetailsResponse getPatientDetailsResponse(int userId) {
 //        db call
         Optional<User> user = userDAO.findById(userId);
@@ -104,7 +150,7 @@ public class TestServiceImpl implements TestService {
 
 
         return patientDetailsResponse;
-    }
+    }*/
 
     /*@Override
     public PatientDetailsResponse getPatientDetailsResponse(int userId) {
@@ -118,7 +164,8 @@ public class TestServiceImpl implements TestService {
         patientDetailsResponse.setAge(user.get().getAge());
 
         return patientDetailsResponse;
-    }*/
+    }
+*/
 
 }
 

@@ -32,4 +32,6 @@ public class User {
 
     @Column(name = "mobile_num")
     private String mobileNumber;
+
+
 }
