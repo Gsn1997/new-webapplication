@@ -6,32 +6,29 @@ import lombok.ToString;
 
 import javax.persistence.*;
 
+@ToString
 @Getter
 @Setter
-@ToString
 @Entity
-@Table(name = "user")
+@Table(name = "phone")
+public class Phone {
 
-public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private int id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "first_name")
+    private String firstName;
 
-    @Column(name = "age")
-    private int age;
+    @Column(name = "last_name")
+    private String lastName;
 
-    @Column(name = "place")
-    private String place;
-
-    @Column(name = "disease")
-    private String disease;
-
-    @Column(name = "mobile_num")
+    @Column(name = "mobile_number")
     private String mobileNumber;
+
+    @Column(name = "email_id")
+    private String emailId;
 
 
 }
