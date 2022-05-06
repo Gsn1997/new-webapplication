@@ -7,14 +7,14 @@ import org.springframework.stereotype.Component;
 
 @Component
 public interface PhoneService {
-/*
+
     String registerPhone(PhoneDto phoneDto);
-*/
 
 
-/*
+
+
     PhoneDto getPhone(int userId);
-*/
+
 
     ResponseEntity<BaseResponse> findPhoneDetails(int userId);
 }

@@ -19,7 +19,7 @@ public class PhoneServiceImpl implements PhoneService {
     @Autowired
     private PhoneDAO phoneDAO;
 
-    /*@Override
+    @Override
     public String registerPhone(PhoneDto phoneDto) {
         Phone phoneEntity = new Phone();
         phoneEntity.setFirstName(phoneDto.getFirstName());
@@ -32,8 +32,7 @@ public class PhoneServiceImpl implements PhoneService {
 
         return "Saved";
     }
-*/
-   /* @Override
+    @Override
     public PhoneDto getPhone(int userId) {
         Optional<Phone> phone = phoneDAO.findById(userId);
         PhoneDto phoneDto =new PhoneDto();
@@ -44,7 +43,7 @@ public class PhoneServiceImpl implements PhoneService {
         phoneDto.setEmailId(phone.get().getEmailId());
 
         return phoneDto;
-    }*/
+    }
 
     @Override
     public ResponseEntity<BaseResponse> findPhoneDetails(int userId) {

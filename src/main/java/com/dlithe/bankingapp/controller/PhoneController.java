@@ -20,10 +20,10 @@ public class PhoneController {
     }*/
 
 
-    /*@GetMapping("get-phone/{userId}")
+    @GetMapping("get-phone/{userId}")
     public PhoneDto fetchPhone(@PathVariable int userId){
         return phoneService.getPhone(userId);
-    }*/
+    }
 
     @GetMapping("fetch-phone-details/{userId}")
     public ResponseEntity<BaseResponse> getPhoneDetails(@PathVariable int userId){
